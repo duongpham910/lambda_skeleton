@@ -22,6 +22,7 @@ To get started, see the following:
 ## Config sam api
 
 Config file template.yml with this line:
+
 ```console
 Resources:
   helloFromLambdaFunction:
@@ -41,12 +42,75 @@ Resources:
 ```
 
 To run API Gateway Locally:
+
 ```console
 sam local start-api
 ```
-## Use the AWS SAM CLI to build and test locally
 
+## Config eslint and prettier for syntax javascript
 
+Install eslint and prettier with this command
+
+```
+yarn add eslint
+yarn add prettier
+yarn add eslint-config-prettier
+yarn add eslint-plugin-prettier
+```
+
+Config eslint with this file `.eslintrc.json`. Refer to this document https://viblo.asia/p/hay-su-dung-eslint-cho-du-an-cua-ban-bJzKm07O59N
+
+```console
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jquery": true
+  },
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "globals": {},
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "prettier/prettier": "error"
+  }
+}
+```
+
+Config prettier with this file `.prettierrc.json`
+
+```console
+{
+  "printWidth": 130,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": false,
+  "bracketSpacing": true,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": ["*.yml", "*.scss"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}
+```
+
+Add to script inside to package.json
+
+```console
+"eslint": "eslint src/ --fix"
+```
 
 ## Add a resource to your application
 
