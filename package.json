@@ -1,9 +1,16 @@
 {
-  "name": "Lambda skeleton",
+  "name": "lambda_skeleton",
   "description": "Build for lambda skeleton",
   "version": "0.0.1",
   "private": true,
   "dependencies": {},
-  "devDependencies": {},
-  "scripts": {}
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1"
+  },
+  "scripts": {
+    "eslint": "eslint src/ --fix"
+  }
 }
