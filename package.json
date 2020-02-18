@@ -3,14 +3,27 @@
   "description": "Build for lambda skeleton",
   "version": "0.0.1",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "aws-sdk": "^2.620.0"
+  },
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "aws-sam-webpack-plugin": "^0.5.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
+    "build": "NODE_ENV=production webpack --display-error-details --display-modules",
+    "watch": "webpack --watch",
     "eslint": "eslint src/ --fix"
   }
 }
