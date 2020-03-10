@@ -1,18 +1,19 @@
-/**
- * A Lambda function that returns a static string
- */
-exports.handler = (event, context, callback) => {
-  // If you change this message, you will need to change hello-from-lambda.test.js
-  const message = 'Hello from Lambda!'
+const { myPromise } = require('./services/myPromise')
 
-  // All log statements are written to CloudWatch
-  console.log(`${message}`)
+exports.handler = async (event, context, callback) => {
+  try {
+    let result = await myPromise()
 
-  callback(null, {
-    statusCode: 200,
-    headers: {
-      'Content-Type': 'text/html'
-    },
-    body: message
-  })
+    let response = {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: result
+      })
+    }
+
+    callback(null, response)
+  } catch (err) {
+    console.log(err)
+    return err
+  }
 }
